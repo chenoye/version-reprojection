@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://github.com/chenjunnn/rm_auto_aim/blob/main/armor_detector/model/mlp.onnx
+HostUrl=https://raw.githubusercontent.com/chenjunnn/rm_auto_aim/refs/heads/main/armor_detector/model/mlp.onnx
