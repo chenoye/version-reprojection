@@ -3,13 +3,15 @@ project(RmVisionWeek2)
 
 set(CMAKE_CXX_STANDARD 17)
 
+# 寻找 OpenCV
 find_package(OpenCV REQUIRED)
 set(ONNXRUNTIME_ROOT "${CMAKE_SOURCE_DIR}/third_party/onnxruntime-linux-x64-1.31.0")
 
+# 包含头文件目录
 include_directories(${OpenCV_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR}/include ${ONNXRUNTIME_ROOT}/include)
 link_directories(${ONNXRUNTIME_ROOT}/lib)
 
-# ===== 目标 1：传统视觉方案 =====
+# ===== 目标 1：传统视觉 =====
 add_executable(main 
     src/main.cpp
     src/detector.cpp
@@ -17,10 +19,17 @@ add_executable(main
 )
 target_link_libraries(main ${OpenCV_LIBS} onnxruntime)
 
-# ===== 目标 2：纯血 YOLO 方案 =====
+# ===== 目标 2：纯血 YOLO =====
 add_executable(main_yolo 
     src/main_yolo.cpp
-    src/solver.cpp    # <--- 加上这行，把解算模块连进来
+    src/solver.cpp
 )
-
 target_link_libraries(main_yolo ${OpenCV_LIBS} onnxruntime)
+
+# ===== 目标 3：EKF 卡尔曼 =====
+add_executable(main_ekf 
+    src/main_ekf.cpp
+    src/solver.cpp         
+    src/armor_tracker.cpp   
+)
+target_link_libraries(main_ekf ${OpenCV_LIBS} onnxruntime)

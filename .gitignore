@@ -1,3 +1,5 @@
 build/
-*.jpg
 *.mp4
+*.avi
+*.txt:Zone.Identifier
+*.jpg:Zone.Identifier
